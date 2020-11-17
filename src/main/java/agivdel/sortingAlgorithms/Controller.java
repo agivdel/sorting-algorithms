@@ -123,7 +123,6 @@ public class Controller extends View{
 
             @Override
             protected void succeeded() {
-                super.succeeded();
                 updateMessage("задача завершена");
                 arrayLengthSlider.setDisable(false);//слайдер неактивен до окончания задачи - дубль!
                 algorithmsComboBox.setDisable(false);//список неактивен до окончания задачи - дубль!
