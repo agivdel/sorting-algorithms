@@ -15,6 +15,7 @@ public class Controller extends View{
     private Task<Void> task;
     public static int timeDelay = Constants.MEDIUM;
 
+
     @FXML
     private void initialize() {
         setArrayLength();
@@ -61,11 +62,8 @@ public class Controller extends View{
             paneShow.getChildren().clear();//не всегда очищает панель
             //успевает ли панель очиститься за паузу или нет, зависит от размера массива (для 100 хватало 10мс, для 1000 - даже 80мс может не хватить)
             //может, причина в другом?
-            System.out.println("before pause");
             Thread.sleep(200);//видимо, иногда после очистки панели проскакивает цикл работы/отрисовки по алгоритму
-            System.out.println("after pause");
             paneShow.getChildren().clear();//повторное очищение через паузу срабатывает всегда
-            System.out.println("after second clear");
             arrayLengthSlider.setDisable(false);//слайдер неактивен до окончания задачи - дубль!
             algorithmsComboBox.setDisable(false);//список неактивен до окончания задачи - дубль!
         }

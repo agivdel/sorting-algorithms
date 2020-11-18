@@ -23,8 +23,16 @@
 #delayComboBox {
     -fx-pref-width: 65;
 }
-#progressBar {
-    -fx-accent: #6c9b45;
+#progressBar .bar {
+    -fx-padding: 1px;
+    -fx-background-color: #6c9b45;
+    -fx-background-insets: 0;
+    -fx-border-style: solid line-join bevel line-cap butt;
+    -fx-border-color: #6c9b45;
+}
+#progressBar .track {
+    -fx-background-color: #22272b;
+
 }
 
 

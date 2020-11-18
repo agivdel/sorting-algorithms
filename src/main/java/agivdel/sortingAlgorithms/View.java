@@ -30,6 +30,7 @@ public class View {
     private static int factor = 10;
     private static double stroke_width = 8.0;
 
+
     void setStage(Stage stage) {
         View.stage = stage;
         scene = stage.getScene();
