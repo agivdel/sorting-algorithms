@@ -45,7 +45,7 @@ public class View {
         });
     }
 
-    void markAxisX() {
+    private void markAxisX() {
         factor = (int)paneShow.getWidth() / arrayLimit;
         stroke_width = factor * 0.8;
     }
