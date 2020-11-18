@@ -7,50 +7,46 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane prefHeight="840" prefWidth="1040" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agivdel.sortingAlgorithms.Controller">
-    <children>
-        <Pane fx:id="paneShow">
-            <StackPane.margin>
-                <Insets bottom="20" left="20" right="20" top="20" />
-            </StackPane.margin>
-        </Pane>
+    <Pane fx:id="paneShow">
+        <StackPane.margin>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </StackPane.margin>
+    </Pane>
 
-        <HBox fx:id="HBox_control" alignment="CENTER" maxHeight="70.0" minHeight="70.0" opacity="0.9" prefHeight="70.0" spacing="10" StackPane.alignment="TOP_CENTER">
-            <padding>
-                <Insets bottom="10" left="5" right="5" top="10" />
-            </padding>
-            <StackPane.margin>
-                <Insets left="20" right="20" top="20" />
-            </StackPane.margin>
-            <children>
-                <ComboBox fx:id="algorithmsComboBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="selectionSort" />
-                            <String fx:value="insertionSort" />
-                        </FXCollections>
-                    </items>
-                    <value>
-                        <String fx:value="selectionSort" />
-                    </value>
-                </ComboBox>
+    <HBox fx:id="HBox_control" alignment="CENTER" maxHeight="70.0" minHeight="70.0" opacity="0.9" prefHeight="70.0" spacing="10" StackPane.alignment="TOP_CENTER">
+        <padding>
+            <Insets bottom="10" left="5" right="5" top="10" />
+        </padding>
+        <StackPane.margin>
+            <Insets left="20" right="20" top="20" />
+        </StackPane.margin>
+        <ComboBox fx:id="algorithmsComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="selectionSort" />
+                    <String fx:value="insertionSort" />
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="selectionSort" />
+            </value>
+        </ComboBox>
 
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                    <children>
-                        <Label fx:id="arrayLengthLabel" alignment="CENTER" contentDisplay="CENTER" text="100" textAlignment="CENTER" />
-                        <Slider fx:id="arrayLengthSlider" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" showTickMarks="true" snapToTicks="true" value="2.0" />
-                    </children>
-                </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <Label fx:id="arrayLengthLabel" alignment="CENTER" contentDisplay="CENTER" text="100" textAlignment="CENTER" />
+            <Slider fx:id="arrayLengthSlider" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" showTickMarks="true" snapToTicks="true" value="2.0" />
+        </VBox>
 
-                <Label fx:id="delayLabel" alignment="CENTER_RIGHT" text="delay, ms:" />
-                <ComboBox fx:id="delayComboBox" />
+        <Label fx:id="delayLabel" alignment="CENTER_RIGHT" text="delay, ms:" />
+        <ComboBox fx:id="delayComboBox" />
 
-                <Label fx:id="progressLabel" alignment="CENTER" prefHeight="20.0" prefWidth="120.0" />
-                <ProgressBar fx:id="progressBar" prefHeight="20.0" prefWidth="100.0" progress="0.0" />
+        <VBox alignment="CENTER" prefWidth="120" >
+            <Label fx:id="progressLabel" alignment="CENTER" prefHeight="20.0" prefWidth="120.0" />
+            <ProgressBar fx:id="progressBar" prefWidth="120.0" progress="0.0" />
+        </VBox>
 
-                <Button fx:id="startButton" onAction="#task_start" text="start" />
-                <ToggleButton fx:id="pauseButton" disable="true" text="pause" />
-                <Button fx:id="cancelButton" disable="false" onAction="#cancelTask" text="cancel" />
-            </children>
-        </HBox>
-    </children>
+        <Button fx:id="startButton" onAction="#task_start" text="start" />
+        <ToggleButton fx:id="pauseButton" disable="true" text="pause" />
+        <Button fx:id="cancelButton" disable="false" onAction="#cancelTask" text="cancel" />
+    </HBox>
 </StackPane>

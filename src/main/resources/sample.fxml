@@ -40,8 +40,8 @@
         <Label fx:id="delayLabel" alignment="CENTER_RIGHT" text="delay, ms:" />
         <ComboBox fx:id="delayComboBox" />
 
-        <VBox alignment="CENTER" prefWidth="120" style="-fx-border-color: black">
-            <Label fx:id="progressLabel" alignment="CENTER" prefHeight="20.0" prefWidth="120.0" style="-fx-border-color: red"/>
+        <VBox alignment="CENTER" prefWidth="120" >
+            <Label fx:id="progressLabel" alignment="CENTER" prefHeight="20.0" prefWidth="120.0" />
             <ProgressBar fx:id="progressBar" prefWidth="120.0" progress="0.0" />
         </VBox>
 

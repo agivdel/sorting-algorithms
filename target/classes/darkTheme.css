@@ -13,18 +13,29 @@
 
 #algorithmsComboBox {
     -fx-pref-width: 115;
+    /*-fx-border-color: #22272b;*/
 }
 #arrayLengthLabel {
     -fx-pref-width: 30;
 }
+
 #delayLabel {
     -fx-pref-width: 60;
 }
 #delayComboBox {
     -fx-pref-width: 65;
 }
-#progressBar {
-    -fx-accent: #6c9b45;
+
+#progressBar .bar {
+    -fx-padding: 1px;
+    -fx-background-color: #6c9b45;
+    -fx-background-insets: 0;
+    -fx-border-style: solid line-join bevel line-cap butt;
+    -fx-border-color: #6c9b45;
+}
+#progressBar .track {
+    -fx-background-color: #22272b;
+
 }
 
 
@@ -47,8 +58,8 @@
 
 /*метки и кнопки, над которыми находится курсор*/
 .label:hover {
-    -fx-border-color: #6c9b45;
-    -fx-border-style: solid outside;
+    /*-fx-border-color: #6c9b45;*/
+    /*-fx-border-style: solid outside;*/
     -fx-text-fill: #6c9b45;
 }
 .button:hover {
