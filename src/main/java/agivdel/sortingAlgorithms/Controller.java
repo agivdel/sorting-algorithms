@@ -11,6 +11,7 @@ public class Controller extends View{
     @FXML private ComboBox<String> algorithmsComboBox;
     @FXML private ComboBox<Integer> delayComboBox;
     @FXML private ToggleButton pauseButton;
+    @FXML private Button cancelButton;
 
     private Task<Void> task;
     public static int timeDelay = Constants.MEDIUM;
@@ -54,23 +55,15 @@ public class Controller extends View{
     }
 
     @FXML
-    private void cancelTask() throws InterruptedException {
+    private void cancel() throws InterruptedException {
         if (task != null) {
             task.cancel();
             task = null;
-            pauseButton.setSelected(false);//если метод был вызван при нажатой кнопке паузы, после отмены задачи делаем кнопку паузы отжатой
-            paneShow.getChildren().clear();//не всегда очищает панель
-            //успевает ли панель очиститься за паузу или нет, зависит от размера массива (для 100 хватало 10мс, для 1000 - даже 80мс может не хватить)
-            //может, причина в другом?
-            Thread.sleep(200);//видимо, иногда после очистки панели проскакивает цикл работы/отрисовки по алгоритму
-            paneShow.getChildren().clear();//повторное очищение через паузу срабатывает всегда
-            arrayLengthSlider.setDisable(false);//слайдер неактивен до окончания задачи - дубль!
-            algorithmsComboBox.setDisable(false);//список неактивен до окончания задачи - дубль!
         }
     }
 
     private Task<Void> createTask() {
-        return new Task<Void>() {//здесь начинается новый поток Thread
+        return new Task<Void>() {
             @Override
             protected Void call() {
                 try {
@@ -88,10 +81,6 @@ public class Controller extends View{
                 Platform.runLater(() -> paneShow.getChildren().clear());
                 updateMessage("задача запущена");
                 for (int i = 0; i < array.length; i++) {
-                    if (isCancelled()) {
-                        updateMessage("задача прервана");
-                        break;
-                    }
                     while (pauseButton.isSelected()) {
                         Thread.onSpinWait();
                         updateMessage("пауза");
@@ -111,8 +100,9 @@ public class Controller extends View{
                     try {
                         Thread.sleep(timeDelay);
                     } catch (InterruptedException interrupted) {
-                        if (isCancelled()) {//
+                        if (isCancelled()) {
                             updateMessage("задача прервана");
+                            Platform.runLater(() -> paneShow.getChildren().clear());
                             break;
                         }
                     }
@@ -122,8 +112,16 @@ public class Controller extends View{
             @Override
             protected void succeeded() {
                 updateMessage("задача завершена");
-                arrayLengthSlider.setDisable(false);//слайдер неактивен до окончания задачи - дубль!
-                algorithmsComboBox.setDisable(false);//список неактивен до окончания задачи - дубль!
+                task = null;
+                arrayLengthSlider.setDisable(false);
+                algorithmsComboBox.setDisable(false);
+            }
+
+            @Override
+            protected void cancelled() {
+                pauseButton.setSelected(false);
+                arrayLengthSlider.setDisable(false);
+                algorithmsComboBox.setDisable(false);
             }
         };
     }

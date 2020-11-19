@@ -47,6 +47,6 @@
 
         <Button fx:id="startButton" onAction="#task_start" text="start" />
         <ToggleButton fx:id="pauseButton" disable="true" text="pause" />
-        <Button fx:id="cancelButton" disable="false" onAction="#cancelTask" text="cancel" />
+        <Button fx:id="cancelButton" disable="false" onAction="#cancel" text="cancel" />
     </HBox>
 </StackPane>

@@ -25,10 +25,10 @@ public class View {
     static Stage stage;
     static Scene scene;
     static Algorithms alg;
-    static int arrayLimit = 100;
+    static int arrayLimit = Constants.ARRAY_LENGTH_DEFAULT;
 
-    private static int factor = 10;
-    private static double stroke_width = 8.0;
+    private static int factor = Constants.FACTOR_DEFAULT;
+    private static double stroke_width = Constants.STROKE_WIDTH_DEFAULT;
 
 
     void setStage(Stage stage) {

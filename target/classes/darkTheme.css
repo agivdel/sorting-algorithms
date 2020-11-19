@@ -13,7 +13,6 @@
 
 #algorithmsComboBox {
     -fx-pref-width: 115;
-    /*-fx-border-color: #22272b;*/
 }
 #arrayLengthLabel {
     -fx-pref-width: 30;
@@ -35,7 +34,7 @@
 }
 #progressBar .track {
     -fx-background-color: #22272b;
-
+    -fx-text-box-border: none;
 }
 
 
