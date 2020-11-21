@@ -8,10 +8,8 @@ import javafx.scene.control.*;
 import javafx.util.converter.IntegerStringConverter;
 
 public class Controller extends View{
-    @FXML private ComboBox<String> algorithmsComboBox;
     @FXML private ComboBox<Integer> delayComboBox;
     @FXML private ToggleButton pauseButton;
-    @FXML private Button cancelButton;
 
     private Task<Void> task;
     public static int timeDelay = Constants.MEDIUM;
@@ -37,7 +35,7 @@ public class Controller extends View{
     }
 
     @FXML
-    private void task_start(ActionEvent actionEvent) {
+    private void start(ActionEvent actionEvent) {
         if (task != null && task.isRunning()) {
             task.cancel();
         }
@@ -50,8 +48,7 @@ public class Controller extends View{
         progressLabel.textProperty().bind(task.messageProperty());
         progressBar.progressProperty().bind(task.progressProperty());
         pauseButton.disableProperty().bind(task.runningProperty().not());//кнопка активна до окончания задачи
-        arrayLengthSlider.setDisable(true);//слайдер неактивен до окончания задачи
-        algorithmsComboBox.setDisable(true);//список неактивен до окончания задачи
+        setSliderAndComboBoxDisable(true);
     }
 
     @FXML
@@ -113,15 +110,13 @@ public class Controller extends View{
             protected void succeeded() {
                 updateMessage("задача завершена");
                 task = null;
-                arrayLengthSlider.setDisable(false);
-                algorithmsComboBox.setDisable(false);
+                setSliderAndComboBoxDisable(false);
             }
 
             @Override
             protected void cancelled() {
                 pauseButton.setSelected(false);
-                arrayLengthSlider.setDisable(false);
-                algorithmsComboBox.setDisable(false);
+                setSliderAndComboBoxDisable(false);
             }
         };
     }

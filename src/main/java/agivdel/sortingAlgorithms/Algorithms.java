@@ -16,7 +16,7 @@ public class Algorithms {
 
     /**
      * в дальнейшем при добавлении новых алгоритмов
-     * соблюдать одинаковый порядок их расположения в этом классе и в sample.fxml
+     * соблюдать одинаковый порядок их расположения в этом классе и в comboBox в sample.fxml
      */
     public void select(int index, int i) {
         switch (index) {

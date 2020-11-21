@@ -2,6 +2,7 @@ package agivdel.sortingAlgorithms;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
@@ -13,6 +14,8 @@ import javafx.stage.Stage;
 public class View {
     @FXML
     public Pane paneShow;
+    @FXML
+    public ComboBox<String> algorithmsComboBox;
     @FXML
     public Label arrayLengthLabel;
     @FXML
@@ -47,10 +50,14 @@ public class View {
     }
 
     private void markAxisX() {
-        factor = (int)paneShow.getWidth() / arrayLimit;
+        factor = (int) paneShow.getWidth() / arrayLimit;
         stroke_width = factor * 0.8;
     }
 
+    void setSliderAndComboBoxDisable(boolean b) {
+        arrayLengthSlider.setDisable(b);//слайдер неактивен до окончания задачи
+        algorithmsComboBox.setDisable(b);//список неактивен до окончания задачи
+    }
 
     /**
      * отрисовка столбцов на главной панели paneShow.
@@ -61,22 +68,23 @@ public class View {
      * 3) привязка линий к окну, а надо - к панели!
      */
     class DrawShape implements Runnable {
-        int k;
-        double arrayValue;
+        Line line;
+        double x;
+        double zeroY;
+        double y;
 
         @Override
         public void run() {
-            int x = k * factor + factor / 2;
-            double zeroY = scene.getHeight() - 40;
-            Line line = new Line(x, zeroY, x, zeroY - arrayValue);
-            line.setStroke(Color.web(Constants.LINE_COLOR));
-            line.setStrokeWidth(stroke_width);
             paneShow.getChildren().add(line);
         }
 
         Runnable param(int k, double arrayValue) {
-            this.k = k;
-            this.arrayValue = arrayValue;
+            this.x = k * factor + factor / 2.0;
+            this.zeroY = scene.getHeight() - 40;
+            this.y = zeroY - arrayValue;
+            this.line = new Line(x, zeroY, x, y);
+            line.setStroke(Color.web(Constants.LINE_COLOR));
+            line.setStrokeWidth(stroke_width);
             return this;
         }
     }
