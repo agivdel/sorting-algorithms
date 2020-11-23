@@ -37,7 +37,7 @@
             <Slider fx:id="arrayLengthSlider" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" showTickMarks="true" snapToTicks="true" value="2.0" />
         </VBox>
 
-        <Label fx:id="delayLabel" alignment="CENTER_RIGHT" text="delay, ms:" />
+        <Label alignment="CENTER_RIGHT" text="delay, ms:" />
         <ComboBox fx:id="delayComboBox" />
 
         <VBox alignment="CENTER" prefWidth="120" >
@@ -45,7 +45,7 @@
             <ProgressBar fx:id="progressBar" prefWidth="120.0" progress="0.0" />
         </VBox>
 
-        <Button fx:id="startButton" onAction="#task_start" text="start" />
+        <Button fx:id="startButton" onAction="#start" text="start" />
         <ToggleButton fx:id="pauseButton" disable="true" text="pause" />
         <Button fx:id="cancelButton" disable="false" onAction="#cancel" text="cancel" />
     </HBox>
