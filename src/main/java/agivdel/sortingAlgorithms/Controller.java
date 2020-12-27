@@ -72,8 +72,7 @@ public class Controller extends View{
             }
 
             private void draw() throws InterruptedException {
-                alg = new Algorithms(arrayLimit, Constants.NUMBER_ORIGIN, Constants.NUMBER_BOUND);
-                Double[] array = alg.getArray();
+                array = Algorithms.prepareArray(arrayLimit, Constants.NUMBER_ORIGIN, Constants.NUMBER_BOUND);
 
                 Platform.runLater(() -> paneShow.getChildren().clear());
                 updateMessage("задача запущена");
@@ -87,7 +86,7 @@ public class Controller extends View{
                     updateProgress(i, array.length);
 
                     //в зависимости от выбранной в algorithmsComboBox позиции выбираем тот или иной алгоритм
-                    alg.select(algorithmsComboBox.getSelectionModel().getSelectedIndex(), i);
+                    Algorithms.select(array, algorithmsComboBox.getSelectionModel().getSelectedIndex(), i);
 
                     Platform.runLater(() -> paneShow.getChildren().clear());
                     for (int k = 0; k < array.length; k++) {

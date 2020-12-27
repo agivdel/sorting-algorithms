@@ -27,7 +27,7 @@ public class View {
 
     static Stage stage;
     static Scene scene;
-    static Algorithms alg;
+    static Double[] array;
     static int arrayLimit = Constants.ARRAY_LENGTH_DEFAULT;
 
     private static int factor = Constants.FACTOR_DEFAULT;

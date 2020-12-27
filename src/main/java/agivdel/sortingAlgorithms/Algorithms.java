@@ -2,30 +2,31 @@ package agivdel.sortingAlgorithms;
 
 import java.util.Random;
 
-public class Algorithms {
-    public static Double[] array;
+public final class Algorithms {
+
     private static final Random random = new Random();
 
-    public Algorithms(long limit, double numberOrigin, double numberBound) {
-        array = random.doubles(limit, numberOrigin, numberBound).boxed().toArray(Double[]::new);
+    private Algorithms() {
     }
 
-    public Double[] getArray() {
-        return array;
+    public static Double[] prepareArray(long limit, double numberOrigin, double numberBound) {
+        return random.doubles(limit, numberOrigin, numberBound).boxed().toArray(Double[]::new);
     }
 
     /**
      * в дальнейшем при добавлении новых алгоритмов
      * соблюдать одинаковый порядок их расположения в этом классе и в comboBox в sample.fxml
      */
-    public void select(int index, int i) {
+    public static void select(Double[] array, int index, int i) {
         switch (index) {
             case 0:
-                selectionSort(i);
+                selectionSort(array, i);
                 break;
             case 1:
-                insertionSort(i);
+                insertionSort(array, i);
                 break;
+                default:
+
         }
     }
 
@@ -33,7 +34,7 @@ public class Algorithms {
     /**
      * Сортировка выбором
      */
-    public void selectionSort(int i) {
+    public static void selectionSort(Double[] array, int i) {
             double min = array[i];
             int minId = i;
             for (int j = i + 1; j < array.length; j++) {
@@ -51,7 +52,7 @@ public class Algorithms {
     /**
      * Сортировка вставками
      */
-    public void insertionSort(int i) {
+    public static void insertionSort(Double[] array, int i) {
             double current = array[i];
             int j = i - 1;
             for (; j >= 0; j--) {
